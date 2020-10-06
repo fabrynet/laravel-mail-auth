@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table -> string('name', 60);
             $table -> string('short_desc');
             $table -> text('desc');
+            $table -> string('img');
             $table -> decimal('price', 8, 2);
             $table -> integer('qty');
 

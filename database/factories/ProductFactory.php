@@ -13,6 +13,7 @@ $factory->define(Product::class, function (Faker $faker) {
       'short_desc'  => $faker -> sentence,
       'desc'        => $faker -> text($maxNbChars = 200),
       'price'       => $faker -> randomFloat($nbMaxDecimals = 2, $min = 1, $max = 2000),
-      'qty'         => $faker -> numberBetween($min = 1, $max = 100)
+      'qty'         => $faker -> numberBetween($min = 1, $max = 100),
+      'img'         => $faker -> imageUrl($width = 200, $height = 300)
     ];
 });

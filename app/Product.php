@@ -11,6 +11,7 @@ class Product extends Model
       'short_desc',
       'desc',
       'price',
-      'qty'
+      'qty',
+      'img'
     ];
 }
