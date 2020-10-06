@@ -22,7 +22,7 @@ Route::post('/products/store', 'LoggedController@storeProducts') -> name('produc
 
 // Products Edit
 Route::get('/products/{id}/edit', 'LoggedController@editProducts') -> name('products.edit');
-Route::put('/products/{id}/update', 'LoggedController@updateProducts') -> name('products.update');
+Route::post('/products/{id}/update', 'LoggedController@updateProducts') -> name('products.update');
 
 // Products Delete
-Route::delete('/products/{id}/destroy', 'LoggedController@destroyProducts') -> name('products.destroy');
+Route::get('/products/{id}/destroy', 'LoggedController@destroyProducts') -> name('products.destroy');

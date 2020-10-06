@@ -7,6 +7,11 @@
             <div class="card">
                 <div class="card-header">
                   <h1>Products</h1>
+                  @auth
+                    <a href="{{ route('products.create') }}">
+                      New Product
+                    </a>
+                  @endauth
                 </div>
 
                 <div class="card-body">

@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                   <h1>Product: {{ $prod -> name }}</h1>
-                  <a href="{{ route('products.index') }}">index products</a>
+                  <a href="{{ route('products.index') }}">Index Products</a>
                 </div>
 
                 <div class="card-body">
@@ -27,19 +27,19 @@
                           QUANTITY: {{ $prod -> qty }}
                         </li>
                         <li>
-                          PRICE: {{ $prod -> qty }}
+                          PRICE: {{ $prod -> price }} $
                         </li>
                         @auth
-                        <li>
-                          <a class="btn btn-primary"
-                            href="{{ route('products.edit', $prod -> id) }}">
-                            Edit
-                          </a>
-                          <a class="btn btn-danger"
-                            href="{{ route('products.destroy', $prod -> id) }}">
-                            Delete
-                          </a>
-                        </li>
+                          <li>
+                            <a class="btn btn-primary"
+                              href="{{ route('products.edit', $prod -> id) }}">
+                              Edit
+                            </a>
+                            <a class="btn btn-danger"
+                              href="{{ route('products.destroy', $prod -> id) }}">
+                              Delete
+                            </a>
+                          </li>
                         @endauth
                       </ul>
                     </div>

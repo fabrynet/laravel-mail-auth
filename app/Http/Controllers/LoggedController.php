@@ -13,16 +13,17 @@ class LoggedController extends Controller
   }
 
   public function createproducts() {
-    return view('products.create');
+    return view('products.edit');
   }
 
   public function storeProducts(Request $request) {
 
     $validatedData = $request -> validate([
-      'firstname' => 'bail|required|alpha|max:60',
-      'lastname' => 'required|alpha|max:60',
-      'date_of_birth' => 'required|date',
-      'private_code' => 'required|digits_between:1,15',
+      'name' => 'bail|required|string|max:60',
+      'short_desc' => 'required|string|max:191',
+      'desc' => 'required|max:500',
+      'price' => 'required|numeric',
+      'qty' => 'required|numeric'
       ]);
 
     $data = $request -> all();
@@ -39,10 +40,11 @@ class LoggedController extends Controller
   public function updateProducts(Request $request, $id) {
 
     $validatedData = $request -> validate([
-      'firstname' => 'bail|required|alpha|max:60',
-      'lastname' => 'required|alpha|max:60',
-      'date_of_birth' => 'required|date',
-      'private_code' => 'required|digits_between:1,15',
+      'name' => 'bail|required|string|max:60',
+      'short_desc' => 'required|string|max:191',
+      'desc' => 'required|max:500',
+      'price' => 'required|numeric',
+      'qty' => 'required|numeric'
       ]);
 
     $data = $request -> all();
