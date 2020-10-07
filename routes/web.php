@@ -26,3 +26,12 @@ Route::post('/products/{id}/update', 'LoggedController@updateProducts') -> name(
 
 // Products Delete
 Route::get('/products/{id}/destroy', 'LoggedController@destroyProducts') -> name('products.destroy');
+
+// Mail
+Route::get('/mailable', function() {
+  $user = App\User::inRandomOrder() -> first();
+  $prod = App\Product::inRandomOrder() -> first();
+  $action = "DELETE";
+
+  return new App\Mail\UserAction($user, $prod, $action);
+});
