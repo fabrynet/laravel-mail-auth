@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 
+use App\Mail\UserAction;
+use Illuminate\Support\Facades\Mail;
+
+use Illuminate\Support\Facades\Auth;
+
 class LoggedController extends Controller
 {
 
@@ -28,6 +33,15 @@ class LoggedController extends Controller
 
     $data = $request -> all();
     $prod = Product::create($data);
+
+    // invio email
+    $email = "admin@boolean.it";
+    $user = Auth::user();
+    $action = "CREATE";
+
+    Mail::to($email)
+          -> send(new UserAction($user, $prod, $action));
+
     return redirect() -> route('products.show', $prod -> id);
 
   }
@@ -51,6 +65,14 @@ class LoggedController extends Controller
     $prod = Product::findOrFail($id);
     $prod -> update($data);
 
+    // invio email
+    $email = "admin@boolean.it";
+    $user = Auth::user();
+    $action = "UPDATE";
+
+    Mail::to($email)
+          -> send(new UserAction($user, $prod, $action));
+
     return redirect() -> route('products.show', $id);
 
   }
@@ -59,6 +81,15 @@ class LoggedController extends Controller
     $prod = Product::findOrFail($id);
     $prod -> update(['deleted' => 1]);
     // $prod -> delete();
+
+    // invio email
+    $email = "admin@boolean.it";
+    $user = Auth::user();
+    $action = "DELETE";
+
+    Mail::to($email)
+          -> send(new UserAction($user, $prod, $action));
+
     return redirect() -> route('products.index');
   }
 }

@@ -7,18 +7,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
+use Illuminate\Support\Facades\Auth;
+
 class UserAction extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $user;
+    public $prod;
+    public $action;
+
+    public function __construct($user, $prod, $action)
     {
-        //
+        $this -> user = $user;
+        $this -> prod = $prod;
+        $this -> action = $action;
     }
 
     /**
@@ -28,6 +31,8 @@ class UserAction extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+      $email = Auth::user() -> email;
+      return $this  -> from($email)
+                    -> view('mail.product');
     }
 }
