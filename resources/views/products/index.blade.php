@@ -19,7 +19,7 @@
                   <div class="d-flex flex-wrap justify-content-around">
 
                     @foreach ($prods as $prod)
-                      <div class="card" style="width: calc(25% - 10px);">
+                      <div class="card mb-3" style="width: calc(25% - 10px);">
                         <img class="card-img-top" src="{{ $prod -> img }}" alt="Product Image">
                         <div class="card-body">
                           <h5 class="card-title">{{ $prod -> name }}</h5>

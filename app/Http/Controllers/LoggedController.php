@@ -57,7 +57,8 @@ class LoggedController extends Controller
 
   public function destroyProducts($id) {
     $prod = Product::findOrFail($id);
-    $prod -> delete();
+    $prod -> update(['deleted' => 1]);
+    // $prod -> delete();
     return redirect() -> route('products.index');
   }
 }

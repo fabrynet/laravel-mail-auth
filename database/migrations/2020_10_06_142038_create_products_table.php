@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table -> decimal('price', 8, 2);
             $table -> integer('qty');
             $table -> string('img');
+            $table -> boolean('deleted');
 
             $table -> timestamps();
 

@@ -12,6 +12,7 @@ class Product extends Model
       'desc',
       'price',
       'qty',
-      'img'
+      'img',
+      'deleted'
     ];
 }

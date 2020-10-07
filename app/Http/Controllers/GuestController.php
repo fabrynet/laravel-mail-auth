@@ -8,7 +8,7 @@ use App\Product;
 class GuestController extends Controller
   {
     public function indexProducts() {
-    $prods = Product::all();
+    $prods = Product::all() -> where('deleted', 0);
     return view('products.index', compact('prods'));
   }
   public function showProducts($id) {
